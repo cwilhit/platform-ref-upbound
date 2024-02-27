@@ -18,3 +18,48 @@ We've broken the repo into three folders:
 3. **configuration:** This folder contains the desired Crossplane configurations of each control plane.
 
 In each of these three root folders, we've grouped elements together based on the business unit (3 groups, plus a sandbox group).
+
+## Setup
+
+1. Clone this repo to your machine.
+2. Deploy a self-hosted Upbound Space using the [documentation](https://docs.upbound.io/spaces/quickstart/azure-deploy/). NOTE: Make sure to include the argocd plugin optional alpha feature in the `up space init ...` command as linked above.
+3. Deploy Argo CD into the same hosting Kubernetes cluster following [Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/)
+4. Configure Argo CD after installation by editing the ConfigMap `argocd-cm` in the `argocd` namespace:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+data:
+  resource.exclusions: |
+    - apiGroups:
+      - "*"
+      kinds:
+      - "*"
+      clusters:
+      - "controlplane-*"
+  resource.inclusions: |
+    - apiGroups:
+      - "*"
+      kinds:
+      - EKS
+      - Bucket
+      - Connector
+      - ControlPlane
+      - Input
+      - IRSA
+      - Kubernetes
+      - MCPRobot
+      - Provider
+      - Configuration
+      - Application
+      clusters:
+      - "*"
+```
+
+5. Deploy the Applications contained in the `bootstrap` folder:
+
+```bash
+kubectl apply -f bootstrap/
+```
+
+6. Synchronize Argo.
