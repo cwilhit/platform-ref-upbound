@@ -13,4 +13,4 @@ spec:
     path: infrastructure/manufacturing-services
   destination:
     server: https://kubernetes.default.svc
-      namespace: manufacturing-services
+    namespace: manufacturing-services

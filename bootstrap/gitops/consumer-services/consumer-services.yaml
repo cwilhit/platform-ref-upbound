@@ -13,4 +13,4 @@ spec:
     path: infrastructure/consumer-services
   destination:
     server: https://kubernetes.default.svc
-      namespace: consumer-services
+    namespace: consumer-services

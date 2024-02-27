@@ -13,4 +13,4 @@ spec:
     path: infrastructure/playground
   destination:
     server: https://kubernetes.default.svc
-      namespace: playground
+    namespace: playground
