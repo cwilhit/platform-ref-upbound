@@ -14,5 +14,5 @@ spec:
     directory:
       recurse: true
   destination:
-    name: kubeconfig-controlplane-playground
+    name: controlplane-playground
     namespace: marketing-services

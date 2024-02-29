@@ -14,5 +14,5 @@ spec:
     directory:
       recurse: true
   destination:
-    name: kubeconfig-controlplane-marketing-services-test
+    name: controlplane-marketing-services-test
     namespace: marketing-services

@@ -14,5 +14,5 @@ spec:
     directory:
       recurse: true
   destination:
-    name: kubeconfig-controlplane-manufacturing-services-prod
+    name: controlplane-manufacturing-services-prod
     namespace: manufacturing-services
